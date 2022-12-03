@@ -5,33 +5,34 @@ import org.hibernate.Session;
 import pl.sda.j133.hibernate.warsztat.DataAccessObject;
 import pl.sda.j133.hibernate.warsztat.HibernateUtil;
 import pl.sda.j133.hibernate.warsztat.model.Mechanik;
-import pl.sda.j133.hibernate.warsztat.model.Pojazd;
 
 import java.util.List;
 
-public class KomendaListaPojazd implements Komenda {
-    private DataAccessObject<Pojazd> dataAccessObject;
+public class KomendaListaMechanik implements Komenda {
+    private DataAccessObject<Mechanik> dataAccessObject;
 
-    public KomendaListaPojazd() {
+    public KomendaListaMechanik() {
         this.dataAccessObject = new DataAccessObject<>();
     }
 
     public String getKomenda() {
-        return "lista pojazdow";
+        return "lista mechanikow";
     }
 
+    @Override
     public void obsluga() {
-        List<Pojazd> pojazdy = dataAccessObject.findAll(Pojazd.class);
-        pojazdy.forEach(System.out::println);
+List<Mechanik> mechanicy = dataAccessObject.findAll(Mechanik.class);
+mechanicy.forEach(System.out::println);
     }
+
 //        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
-//            TypedQuery<Pojazd> zapytanie = session.createQuery("FROM Pojazd", Pojazd.class);
-//            List<Pojazd> listaWszystkichPojazdow = zapytanie.getResultList();
+//            TypedQuery<Mechanik> zapytanie = session.createQuery("FROM Mechanik", Mechanik.class);
+//            List<Mechanik> listaWszystkichMechanikow = zapytanie.getResultList();
 //
-//            listaWszystkichPojazdow.forEach(System.out::println);
+//            listaWszystkichMechanikow.forEach(System.out::println);
 //
 //        } catch (Exception e) {
 //            System.err.println("Błąd bazy" + e);
+//        }
+//    }
 }
-
-

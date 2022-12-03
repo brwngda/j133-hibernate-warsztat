@@ -1,9 +1,6 @@
 package pl.sda.j133.hibernate.warsztat.komendy;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import pl.sda.j133.hibernate.warsztat.DataAccessObject;
-import pl.sda.j133.hibernate.warsztat.HibernateUtil;
 import pl.sda.j133.hibernate.warsztat.model.Pojazd;
 
 public class KomendaDodajPojazd implements Komenda {
