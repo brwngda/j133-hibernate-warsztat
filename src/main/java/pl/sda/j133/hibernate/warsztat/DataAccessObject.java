@@ -6,9 +6,12 @@ package pl.sda.j133.hibernate.warsztat;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pl.sda.j133.hibernate.warsztat.komendy.Komenda;
+import pl.sda.j133.hibernate.warsztat.model.Pojazd;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DataAccessObject<T> {
 
@@ -34,5 +37,17 @@ public class DataAccessObject<T> {
             System.err.println("Błąd bazy" + e);
         }
         return list;
+    }
+
+    public Optional<T> find(Class<T> tClass, Long id) {
+
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
+            T encja = session.get(tClass, id);
+
+            return Optional.ofNullable(encja);
+        } catch (Exception e) {
+            System.err.println("Błąd bazy" + e);
+        }
+        return Optional.empty();
     }
 }

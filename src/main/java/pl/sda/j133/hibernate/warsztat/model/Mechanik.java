@@ -2,7 +2,6 @@ package pl.sda.j133.hibernate.warsztat.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.Set;
 
 @Data
