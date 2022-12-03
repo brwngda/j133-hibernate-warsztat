@@ -32,4 +32,6 @@ public class SerwisPojazdu {
     @ManyToOne
     @ToString.Exclude
     private Pojazd pojazd;
+
+
 }

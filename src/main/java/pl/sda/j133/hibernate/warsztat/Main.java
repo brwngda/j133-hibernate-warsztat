@@ -12,9 +12,12 @@ public class Main {
                 List.of(
                         new KomendaDodajPojazd(),
                         new KomendaDodajMechanik(),
+                        new KomendaDodajSerwisPojazdu(),
                         new KomendaListaPojazd(),
                         new KomendaListaMechanik(),
+                        new KomendaListaSerwisPojazdu(),
                         new KomendaZnajdzPojazd(),
+                        new KomendaZnajdzSerwisPojazdu(),
                         new KomendaZnajdzMechanik(),
                         new KomendaUsunPojazd(),
                         new KomendaUsunMechanik()
