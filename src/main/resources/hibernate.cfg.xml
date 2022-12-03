@@ -14,8 +14,8 @@
      <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Definicja modeli -->
-        <mapping class="pl.sda.hibernate.warsztat.Model.Pojazd"/>
-        <mapping class="pl.sda.hibernate.warsztat.Model.Mechanik"/>
-        <mapping class="pl.sda.hibernate.warsztat.Model.SerwisPojazdu"/>
+        <mapping class="pl.sda.j133.hibernate.warsztat.model.Pojazd"/>
+        <mapping class="pl.sda.j133.hibernate.warsztat.model.Mechanik"/>
+        <mapping class="pl.sda.j133.hibernate.warsztat.model.SerwisPojazdu"/>
     </session-factory>
 </hibernate-configuration>
