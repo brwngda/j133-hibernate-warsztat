@@ -7,6 +7,7 @@ import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pl.sda.j133.hibernate.warsztat.komendy.Komenda;
+import pl.sda.j133.hibernate.warsztat.model.Mechanik;
 import pl.sda.j133.hibernate.warsztat.model.Pojazd;
 
 import java.util.ArrayList;
@@ -65,5 +66,37 @@ public class DataAccessObject<T> {
             System.err.println("Błąd bazy" + ioe);
         }
         return false; // wystąpił błąd, nie usuneliśmy rekordu
+    }
+
+    public void update(Class<T> tClass, Long id, T encjaAktualizująca) {
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            // kolejne linie weryfikują to, że rekord istnieje i że będziemy mogli go aktualizować w jednej transakcji
+            T encja = session.get(tClass, id);
+            if (encja == null) {
+                System.err.println("Nie znaleziono rekordu!");
+                return;
+            }
+
+            session.merge(encjaAktualizująca);
+
+            transaction.commit();
+        } catch (Exception e) {
+            System.err.println("Błąd" + e);
+        }
+    }
+
+    public boolean exists(Class<T> tClass, Long id) {
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
+            T encja = session.get(tClass, id);
+            if (encja != null) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Błąd" + e);
+        }
+        return false;
     }
 }
